@@ -1,19 +1,19 @@
-# OnShape URDF Exporter [WIP]
+# OnShape URDF Exporter
+OnShapeURDF.py is a script to export URDF files from OnShape assemblies
 
-This package is a tool to export URDF files from OnShape assemblies. It is inspired by the onshape-to-robot library, which is a Python library that allows to export URDF files from OnShape assemblies.
+## Requirements
+- Git
+- Python3
 
-## Purpose
-The onshape-to-robot library is a great tool, but has notable bugs that have gone unaddressed for a long time. This project aims to address those bugs and serve as a more maintainable community effort as part of the unified URDF converter library.
-
-## Roadmap
-1. Test out the script on different OnShape assemblies to identify and fix any issues.
-2. Add joint limits. The API is pretty messy for retrieving joint limits it seems.
-3. Implement unit and integration tests to ensure code quality and maintainability.
-
-## Contributing
-
-Contributions are welcome!
-
-## License
-
-This project is licensed under the [MIT License](./LICENSE).
+## Setup
+1. Run `git clone git@github.com:david-dorf/ExportURDF.git` in your terminal
+2. If you don't already have one, create a new OnShape API key [here](https://cad.onshape.com/appstore/dev-portal/apiKeys)
+3. Add the key to your shell config. If you are using bash, add this to your ~/.bashrc file:
+```bash
+export ONSHAPE_API=https://cad.onshape.com
+export ONSHAPE_ACCESS_KEY=<INSERT YOUR ACCESS KEY HERE>
+export ONSHAPE_SECRET_KEY=<INSERT YOUR SECRET KEY HERE>
+```
+4. Re-open your terminal to apply the changes 
+5. Enter this directory in your terminal and run `python3 OnShapeURDF.py`
+6. OnShapeURDF.py will ask you to input your design's URL and a name for your robot design, then output a folder with that name containing the URDF and meshes from your design
