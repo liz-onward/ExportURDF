@@ -17,3 +17,7 @@ export ONSHAPE_SECRET_KEY=<INSERT YOUR SECRET KEY HERE>
 4. Re-open your terminal to apply the changes 
 5. Enter this directory in your terminal and run `python3 OnShapeURDF.py`
 6. OnShapeURDF.py will ask you to input your design's URL and a name for your robot design, then output a folder with that name containing the URDF and meshes from your design
+
+## Known Issues
+1. Subassemblies are not yet supported
+2. Parts MUST be located in Part Studios your assembly's OnShape document. Otherwise, those parts cannot be exported manually or automatically by this script.
