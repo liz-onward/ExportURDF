@@ -78,8 +78,6 @@ class FusionURDF:
                 self.asbuilt_joints.append(joint)
 
             self.getJointOrigins()
-            self.ui.messageBox(str(self.origins))
-            self.ui.messageBox(str(self.children))
 
             # Write links and export meshes
             all_occurences = rootComp.occurrences
@@ -94,7 +92,7 @@ class FusionURDF:
                 else:
                     new_comp.component.name = 'new_' + self.formatName(link.component.name)
 
-                self.original_link_names.append(link.component.name)
+                self.original_link_names.append(self.formatName(link.component.name))
                 self.new_link_names.append(new_comp.component.name)
 
                 bodies = link.bRepBodies
@@ -103,7 +101,6 @@ class FusionURDF:
                     body.copyToComponent(new_comp)
 
                 urdfFile.write(self.fillLinkTemplate(new_comp))
-                self.ui.messageBox(new_comp.component.name)
                 mesh_name = os.path.join('meshes', new_comp.component.name + '.stl')
                 meshPath = os.path.join(folderPath, robotName, mesh_name)
                 stlExportOptions = exporter.createSTLExportOptions(new_comp, meshPath)
@@ -212,7 +209,7 @@ class FusionURDF:
     def getJointOrigins(self):
         for joint in self.rootComp.joints:
             joint_origin = joint.geometryOrOriginOne
-            joint_child = joint.occurrenceOne.component.name
+            joint_child = self.formatName(joint.occurrenceOne.component.name)
             self.children.append(joint_child)
             self.origins.append([joint_origin.origin.x, 
                                  joint_origin.origin.y, 
@@ -220,6 +217,7 @@ class FusionURDF:
             
         for joint in self.rootComp.asBuiltJoints:
             joint_origin = joint.geometry
+            joint_child = self.formatName(joint.occurrenceOne.component.name)
             self.children.append(joint_child)
             self.origins.append([joint_origin.origin.x,
                                  joint_origin.origin.y,
@@ -229,13 +227,12 @@ class FusionURDF:
     def fillLinkTemplate(self, link: adsk.fusion.Occurrence) -> str:
         link_origin_x, link_origin_y, link_origin_z = 0, 0, 0
         new_to_original_links = dict(zip(self.new_link_names, self.original_link_names))
-        original_link_name = new_to_original_links[link.component.name]
-        
         link_name_to_origin = dict(zip(self.children, self.origins))
         if link.component.name != 'base_link':
-            link_origin_x = -link_name_to_origin[original_link_name][0]
-            link_origin_y = -link_name_to_origin[original_link_name][1]
-            link_origin_z = -link_name_to_origin[original_link_name][2]
+            original_link_name = new_to_original_links[self.formatName(link.component.name)]
+            link_origin_x = -(link_name_to_origin[original_link_name][0])
+            link_origin_y = -(link_name_to_origin[original_link_name][1])
+            link_origin_z = -(link_name_to_origin[original_link_name][2])
 
         _, xx, yy, zz, xy, yz, xz = link.getPhysicalProperties().getXYZMomentsOfInertia()
         cm_to_m = 0.01
