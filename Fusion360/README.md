@@ -16,8 +16,8 @@ Before using the script, make sure your Fusion360 design is set up correctly. Th
 In a Fusion360 environment, you can run the script by following these steps:
 1. Open the Fusion360 application.
 2. Use `Shift + S` to open the Scripts and Add-ins dialog.
-3. Click the green `+` icon to add a new script.
-4. Copy the `Fusion360` folder into the script folder.
+3. Click the green `+` icon to open the Fusion360 script folder.
+4. Copy the `Fusion360` folder from inside this repository into the Fusion360 script folder.
 5. Run the `FusionURDF` script by clicking the `Run` button.
 
 ## Roadmap
@@ -30,8 +30,7 @@ In a Fusion360 environment, you can run the script by following these steps:
 
 ## Dependencies
 The script requires the following dependencies:
-Python 3.6+
-Fusion360 API
 
-## Contributing
-Contributions are welcome! Currently the script does not create a base_link, and does not support rigid groups or as-built joints. There are still likely to be lingering issues with the script, so any help is appreciated.
+Python 3.6+
+
+Fusion360 API
