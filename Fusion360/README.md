@@ -2,6 +2,8 @@
 
 This repository contains a Fusion360 URDF converter script that converts Fusion360 models into URDF files. The script is written in Python and uses the Fusion360 API to extract the necessary information from the CAD model and generate the URDF files.
 
+Trees (ie. multiple child components of the same parent) are not currently supported. The code also needs to be factored alongside this as it's quite messy currently.
+
 ## Getting Started
 Before using the script, make sure your Fusion360 design is set up correctly. The script requires the following:
 1. Each link should be a component in the Fusion360 design.
