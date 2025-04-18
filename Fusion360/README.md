@@ -7,7 +7,7 @@ Trees (ie. multiple child components of the same parent) are not currently suppo
 ## Getting Started
 Before using the script, make sure your Fusion360 design is set up correctly. The script requires the following:
 1. Each link should be a component in the Fusion360 design.
-2. At least one link should be designated as the base link. The base link should only have a fixed joint connected to it.
+2. At least one link should be designated as the base link. The base link should only have a fixed joint connected to it. It should also be pinned and grounded to the parent assembly.
 3. The joints should be created using the Fusion360 joint tool. The script currently supports the following joint types:
    - Revolute
    - Fixed
