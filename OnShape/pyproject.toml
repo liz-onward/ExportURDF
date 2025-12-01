@@ -1,0 +1,11 @@
+[project]
+name = "exporturdf"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "colorama>=0.4.6",
+    "numpy>=2.3.5",
+    "requests>=2.32.5",
+]
