@@ -65,9 +65,9 @@ class OnShapeURDF:
 
     def extractID(self, url: str) -> str:
         """Extract the documentID, workspaceID, and elementID from the URL."""
-        documentID = url.split('documents/')[1].split('/')[0]
-        workspaceID = url.split('w/')[1].split('/')[0]
-        elementID = url.split('e/')[1]
+        documentID = url.split('/documents/')[1].split('/')[0]
+        workspaceID = url.split('/w/')[1].split('/')[0]
+        elementID = url.split('/e/')[1]
         return documentID, workspaceID, elementID
 
     def extractLinks(self, folderPath: str, robotName: str) -> list[dict]:
