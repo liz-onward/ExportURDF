@@ -35,7 +35,7 @@ class OnShapeURDF:
             self.urdfFile.write(robotHeader % self.robotName)
             linkData = self.extractLinks(self.folderPath, self.robotName)
             jointData = self.extractJoints()
-            self.fillLinkTemplate(linkData) # this is where I need to have scale
+            self.fillLinkTemplate(linkData)
             self.fillJointTemplate(jointData, linkData)
             self.urdfFile.write(robotFooter)
             print('URDF file created successfully at: {}'.format(
